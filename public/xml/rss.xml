@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" xmlns:atom="http://www.w3.org/2005/Atom" ?>
 <rss version="2.0">
   <channel>
     <title>Unhinged Chicks</title>
     <link>https://unhingedchicks.com</link>
+    <atom:link href="https://unhingedchicks.com/xml/rss.xml" rel="self" type="application/rss+xml" />
     <description>
         Your go-to source for the wildest, most outrageous stories of women breaking the law, causing chaos, and making headlines. 
         From bizarre crimes to public meltdowns, we cover the most unhinged moments with no filter.
     </description>
     <language>en-us</language>
+    <lastBuildDate>Wed, 20 Mar 2025 12:00:00 GMT</lastBuildDate>
+    <copyright>Copyright 2025 Unhinged Chicks</copyright>
 
     <item>
       <title>Two women arrested for allegedly sex trafficking children</title>
@@ -22,7 +25,7 @@
       <title>Palm Coast Woman Arrested for Alleged Relations with Minor</title>
       <link>https://askflagler.com/palm-coast-woman-arrested-for-alleged-relations-with-minor/</link>
       <description>26-year-old Palm Coast resident Angel Sexton was arrested on Wednesday for allegedly having sexual relations with a minor. The victim, a 13-year-old boy, was reportedly subjected to various inappropriate actions by Sexton in December.</description>
-      <pubDate>Thu, 1 Jan 2025 17:46:41 GMT</pubDate>
+      <pubDate>Wed, 1 Jan 2025 17:46:41 GMT</pubDate>
       <guid>https://askflagler.com/palm-coast-woman-arrested-for-alleged-relations-with-minor/</guid>
       <enclosure url="https://askflagler.com/wp-content/uploads/2025/01/as.jpg" type="image/jpeg" />
     </item>

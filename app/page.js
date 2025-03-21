@@ -1,10 +1,15 @@
 'use client';
 
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { useEffect, useState } from 'react';
 
-import { getFeeds, getFeed } from '../util/functions/client/func';
+import { 
+    getFeeds, 
+    getFeed 
+} from '../util/functions/client/func';
+
 import DisqusComments from "@/components/DisqusComments";
 
 export default function Home() {
@@ -15,8 +20,8 @@ export default function Home() {
 
       (async () => {
 
-        let results = await getFeeds();
-
+        // let results = await getFeeds();
+        // console.log(results, ' is results')
         // setArticles(results);
 
         let rr =  await getFeed();
@@ -40,14 +45,20 @@ export default function Home() {
                 <h1 className="text-3xl font-bold mb-6 text-center">Latest News</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {articles.map((article, index) => (
-                        <a key={index} href={article.link} target="_blank" rel="noopener noreferrer" className="block bg-white p-4 border rounded-lg shadow-md hover:shadow-lg transition flex flex-col h-full">
+                        <Link 
+                            key={index} 
+                            href={`/news/${article.slug}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="block bg-white p-4 border rounded-lg shadow-md hover:shadow-lg transition flex flex-col h-full"
+                        >
                             {article.enclosure?.url && (
                                 <img src={article.enclosure.url} alt={article.title} className="w-full h-48 object-cover rounded-md" />
                             )}
                             <h2 className="text-xl font-semibold mt-3 text-black">{article.title}</h2>
                             <p className="text-gray-600 mt-2 flex-grow">{article.contentSnippet}</p>
                             <span className="text-sm text-gray-500 mt-2 block self-start">{new Date(article.pubDate).toLocaleDateString()}</span>
-                        </a>
+                        </Link>
                     ))}
                 </div>
             </div>

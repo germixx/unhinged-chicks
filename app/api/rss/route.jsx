@@ -12,7 +12,6 @@ export async function GET(request, res) {
     try {
 
         const feed = await parser.parseURL(feedUrl);
-        
         return Response.json(feed);
 
     } catch (error) {
