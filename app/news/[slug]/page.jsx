@@ -6,7 +6,7 @@ import DisqusComments from "@/components/DisqusComments";
 export async function generateStaticParams() {
     try {
         const articles = await getFeedSrv();
-        console.log(articles, ' is arts')
+        
         if (!articles || !Array.isArray(articles)) {
             console.error("Error: getFeedSrv() returned an invalid response");
             return [];
@@ -22,7 +22,6 @@ export async function generateStaticParams() {
 export default async function ArticlePage({ params }) {
     const { slug } = await params; // Correct way to use params
     const articles = await getFeedSrv();
-    // console.log(articles, ' is articl')
     const article = articles.find(a => a.slug === slug);
 
     if (!article) {
