@@ -6,7 +6,7 @@ async function getFeed () {
     const response = await fetch('/api/rss');
     
     const data = await response.json();
-
+    
     return data.items.map(item => ({
         title: item.title,
         isoDate: item.isoDate,
@@ -14,16 +14,13 @@ async function getFeed () {
         contentSnippet: item.contentSnippet,
         slug: slugify(item.title),
         pubDate: item.pubDate,
-        description: item.description,
         guid: item.guid,
         enclosure: item.enclosure,
-        content: item.content
+        content: item.content,
+        tags: item['custom:tags'].split(',')
     }));
 
 }
-
-
-
 
 
 

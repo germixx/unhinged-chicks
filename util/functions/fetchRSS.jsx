@@ -1,12 +1,16 @@
 const Parser = require('rss-parser');
-const parser = new Parser();
+const parser = new Parser({
+    customFields: {
+      item: ['custom:tags'],
+    }
+  });
 
-const slugify = (sentence) => sentence.toLowerCase().replace(/\s+/g, '-');
+import { slugify } from '@/util/functions/support';
 
-export async function getFeedSrv () {
+export async function getFeedSrv() {
 
-    const feed = await parser.parseURL('https://unhingedchicks.com/xml/rss.xml'); 
-    
+    const feed = await parser.parseURL('https://unhingedchicks.com/xml/rss.xml');
+    // console.log(feed,  ' is da feedededededs')
     return feed.items.map(item => ({
         title: item.title,
         isoDate: item.isoDate,
@@ -16,7 +20,8 @@ export async function getFeedSrv () {
         pubDate: item.pubDate,
         guid: item.guid,
         enclosure: item.enclosure,
-        content: item.content
+        content: item.content,
+        tags: item['custom:tags'].split(',')
     }));
 
 }

@@ -3,7 +3,11 @@ import Parser from 'rss-parser';
 
 export async function GET(request, res) {
 
-    const parser = new Parser();
+    const parser = new Parser({
+        customFields: {
+          item: ['custom:tags'],
+        }
+      });
     
     // const feedUrl = 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml';
 
