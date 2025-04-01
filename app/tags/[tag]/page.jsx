@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import Link from 'next/link';
 
@@ -14,10 +14,14 @@ import {
 
 const TagPage = () => {
 
+  const router = useRouter();
+
   const { tag } = useParams();  
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   
+  const decodedTag = decodeURIComponent(tag); // Decode URL-encoded tags
+
     useEffect(() => {
 
         (async () => {
@@ -30,11 +34,11 @@ const TagPage = () => {
 
     }, []);
 
-    const filteredArticles = articles.filter((article) => article.tags.includes(tag));
+    const filteredArticles = articles.filter((article) => article.tags.includes(decodedTag));
     
   return (
     <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-6 text-center">Articles tagged: #{tag}</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">Articles tagged: #{decodedTag}</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {
                             loading ? ('Loading') : (
@@ -55,12 +59,13 @@ const TagPage = () => {
                                             <div className="flex justify-center gap-2 mt-3">
                                                 {article.tags.map((tag, index) => (
                                                     <button
+                                                        href={''}
                                                         key={index}
                                                         className="px-3 py-1 text-sm bg-gray-200 rounded-full hover:bg-gray-300 text-black cursor-pointer"
                                                         onClick={(e) => {
                                                             e.preventDefault();
                                                             e.stopPropagation();
-                                                       
+                                                            router.push(`/tags/${encodeURIComponent(tag)}`);
                                                         }}
                                                     >
                                                         #{tag}
