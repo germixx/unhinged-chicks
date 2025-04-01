@@ -31,8 +31,9 @@ export default function Home() {
             // setArticles(results);
 
             let rr = await getFeed();
-            // console.log(rr, ' is rr')
-            setArticles(rr)
+            
+            setArticles(rr);
+            
         })();
 
     }, []);
@@ -54,7 +55,7 @@ export default function Home() {
         startIndex,
         startIndex + ARTICLES_PER_PAGE
     );
-    console.log(currentPage, ' is current page')
+    
     return (
         <div>
             <Head>
