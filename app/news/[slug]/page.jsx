@@ -48,15 +48,15 @@ export default async function ArticlePage({ params }) {
                         Read Full Article
                     </a>
                     <div className="flex justify-center gap-2 mt-3">
-                        {article.tags.map((tag, index) => (
-                        <button
-                            key={index}
-                            className="px-3 py-1 text-sm bg-gray-200 rounded-full hover:bg-gray-300 text-black cursor-pointer"
-                            // onClick={() => setSelectedTag(tag)}
-                        >
-                            #{tag}
-                        </button>
-                        ))}
+                            {article.tags.map((tag, index) => (
+                                <Link
+                                    href={`/tags/${encodeURIComponent(tag)}`}
+                                    key={index}
+                                    className="px-3 py-1 text-sm bg-gray-200 rounded-full hover:bg-gray-300 text-black cursor-pointer"
+                                >
+                                    #{tag}
+                                </Link>
+                            ))}
                     </div>
                 </div>
             </div>
